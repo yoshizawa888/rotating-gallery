@@ -39,7 +39,7 @@ const renderer = new WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 renderer.setPixelRatio(devicePixelRatio);
 
-const camera = new PerspectiveCamera(75, w / h, 1, 10000);
+const camera = new PerspectiveCamera(75, w / h, 1, 1000);
 camera.position.set(0, 0, range);
 
 const scene = new Scene();
@@ -124,11 +124,7 @@ const handleMouseMove = (event: MouseEvent): void => {
 
 	// -1〜+1の範囲で現在のマウス座標を登録する
 	mouse.x = (x / w) * 2 - 1;
-	mouse.y = -(y / h) * 2 + 1;
-
-	setTimeout(() => {
-		mouse = new Vector2(-1, -1);
-	}, 300);
+	mouse.y = -(y / h) * 2 + 1
 };
 
 // const setControll = () => {
@@ -172,6 +168,7 @@ const cardRender = (i: number, y: number, deg: number) => {
 		const foucusObj = intersects[0].object.uuid;
 		if (mesh[i].uuid === foucusObj) {
 			foucusNum = i;
+			mouse = new Vector2(-1, -1);
 		}
 	}
 };
