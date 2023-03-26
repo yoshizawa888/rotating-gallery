@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
-import { WebGLRenderer, Scene, PerspectiveCamera, BoxGeometry, sRGBEncoding, TextureLoader, MeshBasicMaterial, Mesh, Raycaster, Vector2, BufferGeometry, BufferAttribute, Points, ShaderMaterial } from 'three';
+import { WebGLRenderer, Scene, PerspectiveCamera, BoxGeometry, sRGBEncoding, TextureLoader, MeshBasicMaterial, Mesh, Raycaster, Vector2, Vector3, BufferGeometry, BufferAttribute, Points, ShaderMaterial } from 'three';
 
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import vertexShader from '../assets/shaders/shader.vert?raw';
 import fragmentShader from '../assets/shaders/shader.frag?raw';
@@ -128,7 +128,7 @@ const handleMouseMove = (event: MouseEvent): void => {
 
 	setTimeout(() => {
 		mouse = new Vector2(-1, -1);
-	}, 10);
+	}, 300);
 };
 
 // const setControll = () => {
@@ -225,8 +225,8 @@ const render = () => {
 window.addEventListener(
 	'resize',
 	() => {
-		w = innerWidth;
-		h = innerHeight;
+		w = window.innerWidth;
+		h = window.innerHeight;
 		camera.aspect = w / h;
 		camera.updateProjectionMatrix();
 		renderer.setSize(w, h);
